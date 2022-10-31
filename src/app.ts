@@ -1,6 +1,6 @@
 import { AppDataSource } from './data-source'
 import { graphqlHTTP } from 'express-graphql'
-// import asd from './schemas/Schema'
+import schema from './routes/schemas'
 import express from 'express'
 import cors from 'cors'
 const PORT = 3000
@@ -14,10 +14,10 @@ app.listen(PORT, () => {
   console.log(`App is running on port: ${PORT}`)
 })
 
-// app.use('/graphql', graphqlHTTP({
-//   schema: asd,
-//   graphiql: true
-// }))
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true
+}))
 
 app.get('/', (req, res) => {
   res.send('The server is running')
