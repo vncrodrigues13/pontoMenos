@@ -1,8 +1,7 @@
 import { AppDataSource } from './data-source'
-import { graphqlHTTP } from 'express-graphql'
-import schema from './routes/schemas'
 import express from 'express'
 import cors from 'cors'
+import router from './controllers/routes'
 const PORT = 3000
 
 const app = express()
@@ -14,14 +13,11 @@ app.listen(PORT, () => {
   console.log(`App is running on port: ${PORT}`)
 })
 
-app.use('/graphql', graphqlHTTP({
-  schema,
-  graphiql: true
-}))
-
 app.get('/', (req, res) => {
   res.send('The server is running')
 })
+
+app.use('/', router)
 
 AppDataSource.initialize().then(async () => {
   console.log('database connected')
