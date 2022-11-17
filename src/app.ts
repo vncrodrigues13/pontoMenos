@@ -1,12 +1,10 @@
 import { AppDataSource } from './data-source'
 import express from 'express'
-import cors from 'cors'
 import router from './controllers/routes'
-const PORT = 3000
+const PORT = 8080
 
 const app = express()
 
-app.use(cors())
 app.use(express.json())
 
 app.listen(PORT, () => {

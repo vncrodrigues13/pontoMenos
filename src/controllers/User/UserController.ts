@@ -1,10 +1,16 @@
 import { Router } from 'express'
+import { UserServices } from '../../domain/users/UserServices'
 import UserForm from '../../forms/users/UserForm'
 
 const userRouter = Router()
 
-userRouter.get('/', (req, res) => {
-  res.send('find all users')
+userRouter.get('/', async (req, res) => {
+
+  const userServices = new UserServices()
+
+  const users = await userServices.findAll()
+
+  res.send(users)
 })
 
 userRouter.get('/{id}', (req, res) => {
