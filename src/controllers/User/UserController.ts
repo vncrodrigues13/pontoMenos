@@ -1,6 +1,8 @@
-import { Router } from 'express'
+import { response, Router } from 'express'
 import { UserServices } from '../../domain/users/UserServices'
+import UserFactory from '../../factories/User/UserFactory'
 import UserForm from '../../forms/users/UserForm'
+import User from '../../models/User'
 
 const userRouter = Router()
 
@@ -17,12 +19,17 @@ userRouter.get('/{id}', (req, res) => {
   res.send('find user by id')
 })
 
-userRouter.post('/', (req, res) => {
-  let user : UserForm
+userRouter.post('/', async (req, res) => {
 
-  user = req.body.user
+  let userForm : UserForm = req.body['user']
 
-  console.log(user)
+  let user : User = UserFactory.buildUser(userForm)
+
+  const userServices = new UserServices()
+
+  let addedUser = await userServices.addUser(user)
+
+  response.send(addedUser)
 })
 
 export default userRouter

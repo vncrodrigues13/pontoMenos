@@ -3,4 +3,5 @@ export default class UserForm {
   name: string
   email: string
   cpf: string
+  active?: boolean
 }
