@@ -1,4 +1,4 @@
-import Company from '../../src/entity/Company'
+import Company from '../../src/models/Company'
 
 test('should create a company', () => {
   const name = 'Ponto Menos'

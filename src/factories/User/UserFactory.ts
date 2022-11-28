@@ -1,5 +1,8 @@
 import UserForm from "../../forms/users/UserForm";
 import User from "../../models/User";
+import RequiredNameException from '../../exceptions/Users/RequiredNameException'
+import RequiredEmailException from '../../exceptions/Users/RequiredEmailException'
+import ValidatorUtil from '../../utils/ValidatorUtil'
 
 export default class UserFactory { 
 
@@ -7,9 +10,12 @@ export default class UserFactory {
 
         let user = new User()
 
-        user.name = userForm.name
+        this.setName(userForm, user)
+
+        this.setEmail(userForm, user)
+        
         user.cpf  = userForm.cpf
-        user.email = userForm.email
+        
         let userId = userForm.id
 
         if (userId) {
@@ -23,5 +29,22 @@ export default class UserFactory {
         }
 
         return user
+    }
+
+    static setName(userForm: UserForm, user: User) {
+        if (ValidatorUtil.isNullOrEmpty(userForm.name)) {
+            throw new RequiredNameException();
+        }
+
+        user.name = userForm.name
+    }
+
+    static setEmail(userForm: UserForm, user: User) {
+        
+        if (ValidatorUtil.isNullOrEmpty(userForm.email)) {
+            throw new RequiredEmailException();
+        }
+
+        user.email = userForm.email
     }
 }
