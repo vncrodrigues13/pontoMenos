@@ -1,5 +1,5 @@
 import { response, Router } from 'express'
-import { UserServices } from '../../domain/users/UserServicesImpl'
+import { UserServices } from '../../domain/users/UserServices'
 import UserFactory from '../../factories/User/UserFactory'
 import UserForm from '../../forms/users/UserForm'
 import User from '../../models/User'
