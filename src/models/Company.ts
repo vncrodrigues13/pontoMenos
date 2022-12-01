@@ -5,19 +5,10 @@ export interface CompanyModel {
   name: string,
   email: string,
   cnpj: string
-
 }
 
 @Entity()
 export default class Company {
-  constructor (companyForm: CompanyModel) {
-    if (companyForm) {
-      this.name = companyForm.name
-      this.cnpj = companyForm.cnpj
-      this.email = companyForm.email
-    }
-  }
-
     @PrimaryGeneratedColumn()
       id: string
 
