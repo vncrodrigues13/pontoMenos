@@ -1,5 +1,6 @@
 
-import { Column, Entity, Generated, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, Generated, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import Company from './Company'
 
 @Entity()
 export default class User {
@@ -26,4 +27,7 @@ export default class User {
       default: 'true'
     })
       active: boolean
+
+    @ManyToOne(type => Company) @JoinColumn()
+      company: Company
 }

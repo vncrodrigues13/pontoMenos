@@ -7,7 +7,6 @@ const app = express()
 
 app.use(express.json())
 
-
 app.listen(PORT, () => {
   console.log(`App is running on port: ${PORT}`)
 })
@@ -20,4 +19,7 @@ app.use('/', router)
 
 AppDataSource.initialize().then(async () => {
   console.log('database connected')
-}).catch(error => console.log(error))
+}).catch((error) => {
+  console.log('Fail to connect database')
+  console.log(error)
+})

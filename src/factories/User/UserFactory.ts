@@ -3,14 +3,17 @@ import User from '../../models/User'
 import RequiredNameException from '../../exceptions/User/RequiredNameException'
 import RequiredEmailException from '../../exceptions/User/RequiredEmailException'
 import ValidatorUtil from '../../utils/ValidatorUtil'
+import CompanyService from '../../domain/company/CompanyServices'
 
 export default class UserFactory {
-  static buildUser (userForm: UserForm) : User {
+  static async buildUser (userForm: UserForm) : Promise<User> {
     const user = new User()
 
     setName()
 
     setEmail()
+
+    setCompanyId()
 
     user.cpf = userForm.cpf
 
@@ -42,6 +45,16 @@ export default class UserFactory {
       }
 
       user.email = userForm.email
+    }
+
+    async function setCompanyId () {
+      const companyId = userForm.companyId
+      if (companyId && ValidatorUtil.isNotNullOrEmpty(companyId)) {
+        const company = await CompanyService.findById(companyId)
+        if (company) {
+          user.company = company
+        }
+      }
     }
   }
 }

@@ -8,8 +8,7 @@ import ValidatorUtil from '../../utils/ValidatorUtil'
 export default class CompanyFactory {
   static buildCompany (companyForm: CompanyForm): Company {
     const company = new Company()
-
-    company.id = companyForm?.id || ''
+    company.id = (companyForm?.id) ? companyForm.id : '0'
     setName()
     setEmail()
     setCNPJ()

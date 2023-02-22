@@ -4,4 +4,5 @@ export default class UserForm {
   email: string
   cpf: string
   active?: boolean
+  companyId?: string
 }

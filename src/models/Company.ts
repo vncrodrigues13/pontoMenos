@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import User from './User'
 
 export interface CompanyModel {
   id?: string,
@@ -15,9 +16,12 @@ export default class Company {
     @Column({ nullable: false })
       name: string
 
-    @Column({ nullable: false })
+    @Column({ nullable: false, unique: true })
       email: string
 
-    @Column({ nullable: false })
+    @Column({ nullable: false, unique: true })
       cnpj: string
+
+    @OneToMany(type => User, user => user.company) @JoinColumn()
+      users: User[]
 }

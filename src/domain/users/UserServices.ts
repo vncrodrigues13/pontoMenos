@@ -28,11 +28,11 @@ export class UserServices {
   }
 
   static async findActives (): Promise<User[] | []> {
-    const allUsers = await userRepository.findBy({
+    const activeUsersList = await userRepository.findBy({
       active: true
     })
 
-    return allUsers
+    return activeUsersList
   }
 
   static async addUser (userToAdd: User): Promise<User | null> {
