@@ -1,4 +1,4 @@
-import UserForm from '../../forms/user/UserForm'
+import UserForm from '../../forms/UserForm'
 import User from '../../models/User'
 import RequiredNameException from '../../exceptions/User/RequiredNameException'
 import RequiredEmailException from '../../exceptions/User/RequiredEmailException'

@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, Generated, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 import User from './User'
 
 export interface CompanyModel {
@@ -10,7 +10,7 @@ export interface CompanyModel {
 
 @Entity()
 export default class Company {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
       id: string
 
     @Column({ nullable: false })

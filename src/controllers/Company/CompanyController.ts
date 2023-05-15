@@ -1,8 +1,7 @@
-import { Router, Request, Response, response } from 'express'
+import { Router, Request, Response } from 'express'
 import CompanyService from '../../domain/company/CompanyServices'
 import RequiredIdException from '../../exceptions/Company/RequiredIdException'
 import CompanyFactory from '../../factories/Company/CompanyFactory'
-import CompanyForm from '../../forms/company/CompanyForm'
 
 const companyRouter = Router()
 

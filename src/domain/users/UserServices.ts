@@ -58,4 +58,14 @@ export class UserServices {
 
     this.updateUser(userToDelete)
   }
+
+  static async validateExistingUser(user: User) {
+    const anyUser = await userRepository.findOneBy({
+      cpf: user.cpf
+    }) || await userRepository.findOneBy( {
+      email: user.email
+    })
+
+    return !!anyUser
+  }
 }

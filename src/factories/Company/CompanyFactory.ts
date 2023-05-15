@@ -1,7 +1,7 @@
 import RequiredCNPJException from '../../exceptions/Company/RequiredCNPJException'
 import RequiredEmailException from '../../exceptions/Company/RequiredEmailException'
 import RequiredNameException from '../../exceptions/Company/RequiredNameException'
-import CompanyForm from '../../forms/company/CompanyForm'
+import CompanyForm from '../../forms/CompanyForm'
 import Company from '../../models/Company'
 import ValidatorUtil from '../../utils/ValidatorUtil'
 

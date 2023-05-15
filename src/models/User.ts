@@ -4,8 +4,7 @@ import Company from './Company'
 
 @Entity()
 export default class User {
-    @PrimaryGeneratedColumn()
-    @Generated('uuid')
+    @PrimaryGeneratedColumn('uuid')
       id : string
 
     @Column({

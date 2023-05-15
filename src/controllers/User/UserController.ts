@@ -1,7 +1,7 @@
 import { Response, Request, Router } from 'express'
 import { UserServices } from '../../domain/users/UserServices'
 import UserFactory from '../../factories/User/UserFactory'
-import UserForm from '../../forms/user/UserForm'
+import UserForm from '../../forms/UserForm'
 import User from '../../models/User'
 
 const userRouter = Router()
@@ -18,7 +18,7 @@ userRouter.get('/find-all/', async (req: Request, res: Response) => {
   res.send(users)
 })
 
-userRouter.get('/find-by-id/:id', async (req: Request, res: Response) => {
+userRouter.get('/:id', async (req: Request, res: Response) => {
   const id = req.params.id
 
   UserServices.findById(id).then((foundedUser) => {
@@ -37,7 +37,6 @@ userRouter.post('/', async (req: Request, res: Response) => {
 
     res.send(addedUser)
   } catch (e) {
-    console.log('asdasdsada')
     res.status(400).send(e)
   }
 })
